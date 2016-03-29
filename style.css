@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.header-wrap{
+  vertical-align: top;
+  width: 30%;
+  display: inline-block;
+  padding: 10px 30px;
+}
+
+.header-wrap-left {
+  background-color: red;
+  text-align: left;
+}
+
+.header-wrap-middle {
+  background-color: blue;
+  text-align: center;
+}
+
+.header-wrap-right {
+  background-color: green;
+  text-align: right;
+}
+
+.playerOne {
+  height: 75px;
+}
+
+.playerOneScore {
+  height: 75px;
+}
+
+.versus {
+  height: 150px;
+}
+
+.playerTwo {
+  height: 75px;
+}
+
+.playerTwoScore {
+  height: 75px;
+}
+
+.ticTacToe {
+  width: 60%;
+  margin: 30px auto;
+}
+
+.rowOne {}
+.rowTwo {}
+.rowThree {}
+
+.box {
+  width: 160px;
+  height: 160px;
+  display: inline-block;
+  background-color: pink;
+}
+.box.X{
+  background-color: red;
+}
+.box.O{
+  background-color: green;
+}
