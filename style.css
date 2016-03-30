@@ -2,9 +2,34 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Cardo', sans-serif;
+  background-image: url('background.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  margin: 0 auto;
+}
+
+.bird {
+  position: absolute;
+}
+
+.bird1 {
+  width: 50px;
+  top: 63%;
+  left: 8%;
+}
+
 .header {
   margin: 0 auto;
   text-align: center;
+  font-family: sans-serif;
+  font-weight: bolder;
+  opacity: 0.8;
 }
 
 .header-wrap{
@@ -15,42 +40,48 @@
 }
 
 .header-wrap-left {
-  background-color: red;
   text-align: left;
 }
 
 .header-wrap-middle {
-  background-color: blue;
   text-align: center;
+  padding: 0;
 }
 
 .header-wrap-right {
-  background-color: green;
   text-align: right;
 }
 
 .playerOne {
-  height: 75px;
+  height: 50px;
+  background-color: #F3E68A;
+  padding: 15px;
 }
 
 .playerOneScore {
-  height: 75px;
+  height: 50px;
 }
 
 .versus {
-  height: 150px;
+  height: 100px;
+}
+
+.versus h1 {
+  padding: 15px 0 38px 0;
 }
 
 .playerTwo {
-  height: 75px;
+  height: 50px;
+  background-color: #7FD5CE;
+  padding: 15px;
 }
 
 .playerTwoScore {
-  height: 75px;
+  height: 50px;
 }
 
 .ticTacToe {
-  width: 516px;
+  width: 460px;
   margin: 30px auto;
 }
 
@@ -59,14 +90,28 @@
 .rowThree {}
 
 .box {
-  width: 160px;
-  height: 160px;
+  width: 150px;
+  height: 150px;
   display: inline-block;
-  background-color: pink;
+  border: 1px solid #D7D8DA;
 }
-.box.X{
-  background-color: red;
+
+.box.X {
+  background-color: #F3E68A;
+  opacity: 0.8;
 }
-.box.O{
-  background-color: green;
+
+.box.O {
+  background-color: #7FD5CE;
+  opacity: 0.8;
+}
+
+.box.winnerX {
+  background-color: #F3E68A;
+  opacity: 0.8;
+}
+
+.box.winnerO {
+  background-color: #7FD5CE;
+  opacity: 0.8;
 }
