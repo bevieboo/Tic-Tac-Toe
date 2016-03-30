@@ -6,6 +6,8 @@ var ticTacToe = [
 
 var counter = 0;
 var winner = '';
+var xWins = 0;
+var oWins = 0;
 
 $('.box').click(function() {
   // Assign box:
@@ -32,14 +34,14 @@ $('.box').click(function() {
   }
   // Check for winner every time each box is clicked.
   checkForWinner();
-  console.log(checkForWinner());
   // If winner has been determined, stop game and announce winner.
   if (winner === 'X') {
-    console.log('winner x set')
     $('.box').addClass('winnerX');
   } else if (winner === 'O') {
     $('.box').addClass('winnerO');
   }
+  // Keeping tabs of player scores
+  playerScores();
 })
 
 $('.reset').click(function() {
@@ -53,25 +55,17 @@ $('.reset').click(function() {
     for (var j = 0; j < ticTacToe[i].length; j++) {
       ticTacToe[i][j] = null;
     }
+  };
+  if (xWins === 3 || oWins === 3) {
+    xWins = 0;
+    oWins = 0;
   }
 })
 
 $(document).mousemove(function(event) {
-  var x = event.pageX;
-  var y = event.pageY;
-  windowWidth = $(window).width();
-  var offsetX = windowWidth / 2;
-  var mouseX = x - offsetX;
-  windowHeight = $(window).height();
-  var offsetY = windowHeight / 2;
-  var mouseY = y - offsetY;
-  var $bird1 = $('.bird1')
-  var bird1Left = $bird1.data('left');
-console.log($('.header').data('butts'));
-  $bird1.css('left', bird1Left + mouseX/500 + '%');
-  // console.log( parseInt(bird1Left) + mouseX );
+  moveImage('.bird1', 300);
+  moveImage('.bird2', 800);
 })
-
 
 // Check for winner.
 function checkForWinner() {
@@ -79,6 +73,15 @@ function checkForWinner() {
   checkVertical();
   checkDiagonal();
   return winner;
+}
+
+// Log player scores.
+function playerScores() {
+  if (winner === 'X') {
+    return xWins += 1;
+  } else if (winner === 'O') {
+    return oWins += 1;
+  }
 }
 
 // Check each horizontal row for winner, excluding null value.
@@ -113,4 +116,19 @@ function checkDiagonal() {
       return winner = ticTacToe[0][2];
     }
   }
+}
+
+function moveImage(selector, speed) {
+  var x = event.pageX;
+  var y = event.pageY;
+  windowWidth = $(window).width();
+  var mouseX = x - (windowWidth / 2);
+  windowHeight = $(window).height();
+  var mouseY = y - (windowHeight / 2);
+
+  var selector = $(selector);
+  var selectorLeft = selector.data('left');
+  selector.css('left', selectorLeft + mouseX/speed + '%');
+  var selectorTop = selector.data('top');
+  selector.css('top', selectorTop + mouseY/speed + '%');
 }
