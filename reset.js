@@ -1,9 +1,9 @@
 // Reset board to beginning state.
 $('.hexagon').click(function() {
-  $('.box').removeClass('X');
-  $('.box').removeClass('O');
-  $('.box').removeClass('mouseOverX');
-  $('.box').removeClass('mouseOverO');
+  $('.box').removeClass(playerOneColor);
+  $('.box').removeClass(playerTwoColor);
+  // $('.box').removeClass('mouseOverX');
+  // $('.box').removeClass('mouseOverO');
   $('.box').removeClass('flip');
   $('.ticTacToe').removeClass('disabled');
   counter = 0;
@@ -16,12 +16,12 @@ $('.hexagon').click(function() {
     xWins = 0;
     oWins = 0;
     gameRound = 0;
-    $('.X-1').removeClass('winX');
-    $('.X-2').removeClass('winX');
-    $('.X-3').removeClass('winX');
-    $('.O-1').removeClass('winO');
-    $('.O-2').removeClass('winO');
-    $('.O-3').removeClass('winO');
+    $('.X-1').removeClass(playerOneColor);
+    $('.X-2').removeClass(playerOneColor);
+    $('.X-3').removeClass(playerOneColor);
+    $('.O-1').removeClass(playerTwoColor);
+    $('.O-2').removeClass(playerTwoColor);
+    $('.O-3').removeClass(playerTwoColor);
   }
   if (winner) {
     gameRound += 1;

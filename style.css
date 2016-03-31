@@ -42,7 +42,7 @@ body {
   border-radius: 15%;
 }
 
-.color1, .color2, .color3, .color4 {
+.color {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -50,16 +50,28 @@ body {
   margin: 60px 10px;
 }
 
-.color1 {
+.yellow {
   background-color: #F3E68A;
 }
-.color2 {
+.green {
   background-color: #7FD5CE;
 }
-.color3 {
+.blue {
   background-color: #AFD0FE;
 }
-.color4 {
+.pink {
+  background-color: #FFD1DC;
+}
+.yellow .back{
+  background-color: #F3E68A;
+}
+.green .back {
+  background-color: #7FD5CE;
+}
+.blue .back{
+  background-color: #AFD0FE;
+}
+.pink .back {
   background-color: #FFD1DC;
 }
 
@@ -174,7 +186,6 @@ body {
 }
 
 .winX {
-  background-color: #F3E68A;
   /*width: 32%;
   height: 50px;*/
   display: inline-block;
@@ -182,7 +193,6 @@ body {
 }
 
 .winO {
-  background-color: #7FD5CE;
   /*width: 32%;
   height: 50px;*/
   display: inline-block;
@@ -209,6 +219,7 @@ body {
   border: 1px solid #D7D8DA;
   -webkit-perspective: 600px;
   -moz-perspective: 600px;
+  background-color: transparent !important;
 }
 
 .box .front {
@@ -359,4 +370,8 @@ body {
 .hexagonMain:after {
     right: -30px;
     border-left: 30px #D7D8DA solid;
+}
+
+.selected {
+  border: 2px solid black;
 }

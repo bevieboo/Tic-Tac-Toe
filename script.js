@@ -46,11 +46,11 @@ $('.box').click(function() {
 function determinePlayerTurn(box) {
   if (!$(box).hasClass('X') && !$(box).hasClass('O')) {
     if (counter % 2 === 0) {
-      $(box).addClass('X');
+      $(box).addClass(playerOneColor);
       $(box).addClass('flip');
       counter += 1;
     } else if (counter % 2 != 0) {
-      $(box).addClass('O');
+      $(box).addClass(playerTwoColor);
       $(box).addClass('flip');
       counter += 1;
     }
@@ -58,11 +58,11 @@ function determinePlayerTurn(box) {
 }
 
 function updateArray(index) {
-  if ($(index).hasClass('X')) {
+  if ($(index).hasClass(playerOneColor)) {
     var x1 = $(index).attr('id')[3];
     var x2 = $(index).attr('id')[4];
     ticTacToe[x1][x2] = 'X';
-  } else if ($(index).hasClass('O')) {
+  } else if ($(index).hasClass(playerTwoColor)) {
     var o1 = $(index).attr('id')[3];
     var o2 = $(index).attr('id')[4];
     ticTacToe[o1][o2] = 'O';
@@ -71,12 +71,12 @@ function updateArray(index) {
 
 function announceWinner() {
   if (winner === 'X') {
-    $('.box').addClass('X');
-    $('.box').removeClass('O');
+    $('.box').addClass(playerOneColor);
+    $('.box').removeClass(playerTwoColor);
     $('.box').addClass('flip');
   } else if (winner === 'O') {
-    $('.box').addClass('O');
-    $('.box').removeClass('X');
+    $('.box').addClass(playerTwoColor);
+    $('.box').removeClass(playerOneColor);
     $('.box').addClass('flip');
   } else if (counter === 9) {
     console.log('TAI');
@@ -99,19 +99,19 @@ function playerScores() {
   }
 
   if (xWins === 1) {
-    $('.X-1').addClass('winX');
+    $('.X-1').addClass('winX ' + playerOneColor);
   } else if (xWins === 2) {
-    $('.X-2').addClass('winX');
+    $('.X-2').addClass('winX ' + playerOneColor);
   } else if (xWins === 3) {
-    $('.X-3').addClass('winX');
+    $('.X-3').addClass('winX ' + playerOneColor);
   }
 
   if (oWins === 1) {
-    $('.O-1').addClass('winO');
+    $('.O-1').addClass('winO ' + playerTwoColor);
   } else if (oWins === 2) {
-    $('.O-2').addClass('winO');
+    $('.O-2').addClass('winO ' + playerTwoColor);
   } else if (oWins === 3) {
-    $('.O-3').addClass('winO');
+    $('.O-3').addClass('winO ' + playerTwoColor);
   }
 
 }
