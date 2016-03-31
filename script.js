@@ -37,10 +37,6 @@ $('.box').click(function() {
     // }
   }
 
-
-
-
-
 })
 
 function determinePlayerTurn(box) {
@@ -69,6 +65,7 @@ function updateArray(index) {
   }
 }
 
+// Change all squares to winner's colors.
 function announceWinner() {
   if (winner === 'X') {
     $('.box').addClass(playerOneColor);
@@ -85,19 +82,19 @@ function announceWinner() {
 
 // Move images on screen.
 $(document).mousemove(function(event) {
-  moveImage('.bird1', 300);
-  moveImage('.bird2', 800);
+  moveImage('.bird1', 100);
+  moveImage('.bird2', 300);
 })
 
 // Log player scores.
 function playerScores() {
-
   if (winner === 'X') {
     xWins += 1;
   } else if (winner === 'O') {
     oWins += 1;
   }
 
+  // When a player wins, update player's score card.
   if (xWins === 1) {
     $('.X-1').addClass('winX ' + playerOneColor);
   } else if (xWins === 2) {
@@ -105,7 +102,6 @@ function playerScores() {
   } else if (xWins === 3) {
     $('.X-3').addClass('winX ' + playerOneColor);
   }
-
   if (oWins === 1) {
     $('.O-1').addClass('winO ' + playerTwoColor);
   } else if (oWins === 2) {
@@ -121,6 +117,8 @@ function moveImage(selector, speed) {
   var x = event.pageX;
   var y = event.pageY;
   windowWidth = $(window).width();
+  // Want center point to be in the middle. ie 0,0.
+  // Want images to move left and right from middle point.
   var mouseX = x - (windowWidth / 2);
   windowHeight = $(window).height();
   var mouseY = y - (windowHeight / 2);
