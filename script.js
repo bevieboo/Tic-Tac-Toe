@@ -76,14 +76,20 @@ function announceWinner() {
     $('.box').removeClass(playerOneColor);
     $('.box').addClass('flip');
   } else if (counter === 9) {
-    console.log('TAI');
+    // console.log('TAI');
+    $('.box').removeClass(playerOneColor);
+    $('.box').removeClass(playerTwoColor);
+    counter = 0;
+    gameRound += 1;
   }
 }
 
 // Move images on screen.
 $(document).mousemove(function(event) {
-  moveImage('.bird1', 100);
-  moveImage('.bird2', 300);
+  moveImage('.bird1', 80);
+  moveImage('.bird2', 100);
+  moveImage('.bird3', 120);
+  moveImage('.bird4', 400);
 })
 
 // Log player scores.
