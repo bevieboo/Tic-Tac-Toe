@@ -7,29 +7,69 @@
     <link href='https://fonts.googleapis.com/css?family=Cardo:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
+<!--
+    <div class="userOptions">
+
+      <div class="userOne">
+        <div class="userOneName"></div>
+        <div class="color1"></div>
+        <div class="color2"></div>
+        <div class="color3"></div>
+      </div>
+
+      <div class="userTwo">
+        <div class="userTwoName"></div>
+        <div class="color1"></div>
+        <div class="color2"></div>
+        <div class="color3"></div>
+      </div>
+
+      <div class="hexagonMain">
+        <h3>PLAY</h3>
+      </div>
+
+    </div> -->
 
     <img src="images/bird1.png" class="bird bird1" data-left="8" data-top="63">
 
     <img src="images/bird2.png" class="bird bird2" data-left="75" data-top="30">
 
-      <div class="header-wrap-left header-wrap">
-        <div class="playerOne">Player 1</div>
-        <div class="playerOneScore"></div>
-      </div>
+    <div class="header-wrap">
 
-      <div class="header-wrap-middle header-wrap">
-        <div class="versus">
-          <h1>VS</h1>
-          <button class="reset")>Reset</button>
+      <div class="header-wrap-left">
+        <div class="playerOne">
+          <h3>PLAYER 1</h3>
+        </div>
+        <div class="playerOneScore">
+          <div class="X-1"></div>
+          <div class="X-2"></div>
+          <div class="X-3"></div>
         </div>
       </div>
 
-      <div class="header-wrap-right header-wrap">
-        <div class="playerTwo">Player 2</div>
-        <div class="playerTwoScore"></div>
+      <div class="header-wrap-middle">
+        <div class="versus">
+          <div class="hexagon">
+            <p>RESET</p>
+          </div>
+          <!-- <button class="reset">Reset</button> -->
+        </div>
+      </div>
+
+      <div class="header-wrap-right">
+        <div class="playerTwo">
+          <h3>PLAYER 2</h3>
+        </div>
+        <div class="playerTwoScore">
+          <div class="O-3"></div>
+          <div class="O-2"></div>
+          <div class="O-1"></div>
+        </div>
       </div>
 
     </div>
+
+    <div class="rounds"></div>
 
     <div class="ticTacToe">
 
@@ -52,8 +92,8 @@
       </div>
 
     </div>
-    <!-- <div class="hex"></div> -->
 
+    <!-- <div class="hexagon"></div> -->
 
     <script src="jquery-1.12.2.min.js"></script>
     <script src="script.js"></script>

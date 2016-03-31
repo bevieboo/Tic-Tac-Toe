@@ -8,6 +8,7 @@ var counter = 0;
 var winner = '';
 var xWins = 0;
 var oWins = 0;
+var gameRounds = 1;
 
 $('.box').click(function() {
   // Assign box:
@@ -42,13 +43,32 @@ $('.box').click(function() {
   }
   // Keeping tabs of player scores
   playerScores();
+
+  if (xWins === 1) {
+    $('.X-1').addClass('winX');
+  } else if (xWins === 2) {
+    $('.X-2').addClass('winX');
+  } else if (xWins === 3) {
+    $('.X-3').addClass('winX');
+  }
+
+  if (oWins === 1) {
+    $('.O-1').addClass('winO');
+  } else if (oWins === 2) {
+    $('.O-2').addClass('winO');
+  } else if (oWins === 3) {
+    $('.O-2').addClass('winO');
+  }
 })
 
-$('.reset').click(function() {
+// Reset board to beginning state.
+$('.hexagon').click(function() {
   $('.box').removeClass('X');
   $('.box').removeClass('O');
   $('.box').removeClass('winnerX');
   $('.box').removeClass('winnerO');
+  $('.box').removeClass('mouseOverX');
+  $('.box').removeClass('mouseOverO');
   winner = '';
   counter = 0;
   for (var i = 0; i < ticTacToe.length; i++) {
@@ -59,13 +79,39 @@ $('.reset').click(function() {
   if (xWins === 3 || oWins === 3) {
     xWins = 0;
     oWins = 0;
+    $('.X-1').removeClass('winX');
+    $('.X-2').removeClass('winX');
+    $('.X-3').removeClass('winX');
+    $('.O-1').removeClass('winO');
+    $('.O-2').removeClass('winO');
+    $('.O-3').removeClass('winO');
   }
 })
 
+// Move images on screen.
 $(document).mousemove(function(event) {
   moveImage('.bird1', 300);
   moveImage('.bird2', 800);
 })
+
+// Mouse-over effects over boxes.
+$('.box').mouseover(function() {
+  if (counter % 2 === 0 && !$(this).hasClass('mouseOverO')) {
+    $(this).addClass('mouseOverX');
+  } else if (counter % 2 != 0 && !$(this).hasClass('mouseOverX')) {
+    $(this).addClass('mouseOverO');
+  }
+})
+$('.box').mouseleave(function() {
+  if (counter % 2 === 0) {
+    $(this).removeClass('mouseOverX');
+  } else if (counter % 2 != 0) {
+    $(this).removeClass('mouseOverO');
+  }
+})
+
+// Display number of rounds on document.
+$('.rounds').html('ROUND: ' + gameRounds);
 
 // Check for winner.
 function checkForWinner() {
@@ -106,6 +152,7 @@ function checkVertical() {
   }
 }
 
+// Check diagonals for winner, excluding null value.
 function checkDiagonal() {
   if (ticTacToe[0][0] === ticTacToe[1][1] && ticTacToe[0][0] === ticTacToe[2][2]) {
     if (ticTacToe[0][0] != null) {
@@ -118,6 +165,7 @@ function checkDiagonal() {
   }
 }
 
+// Find mouse position and how much to move.
 function moveImage(selector, speed) {
   var x = event.pageX;
   var y = event.pageY;
