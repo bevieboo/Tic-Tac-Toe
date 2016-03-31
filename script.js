@@ -8,62 +8,73 @@ var counter = 0;
 var winner = '';
 var xWins = 0;
 var oWins = 0;
-var gameRounds = 1;
+var gameRound = 1;
 
 $('.box').click(function() {
   // Assign box:
   // Alternate between X and O with each click.
-  if (!$(this).hasClass('X') && !$(this).hasClass('O')) {
-    if (counter % 2 === 0) {
-      $(this).addClass('X');
-      $(this).addClass('flip');
-      counter += 1;
-    } else if (counter % 2 != 0) {
-      $(this).addClass('O');
-      $(this).addClass('flip');
-      counter += 1;
-    }
-  }
+  determinePlayerTurn(this);
+
   // Assign an Id relevant to the position of each box.
   // Assign player to array ticTacToe to find the winner.
-  if ($(this).hasClass('X')) {
-    var x1 = $(this).attr('id')[3];
-    var x2 = $(this).attr('id')[4];
-    ticTacToe[x1][x2] = 'X';
-  } else if ($(this).hasClass('O')) {
-    var o1 = $(this).attr('id')[3];
-    var o2 = $(this).attr('id')[4];
-    ticTacToe[o1][o2] = 'O';
-  }
+  updateArray(this);
+
   // Check for winner every time each box is clicked.
   checkForWinner();
+
   // If winner has been determined, stop game and announce winner.
-  if (winner === 'X') {
-    $('.box').addClass('X');
-    $('.box').addClass('flip');
-  } else if (winner === 'O') {
-    $('.box').addClass('O');
-    $('.box').addClass('flip');
-  }
+  announceWinner();
+
   // Keeping tabs of player scores
   playerScores();
 
-  if (xWins === 1) {
-    $('.X-1').addClass('winX');
-  } else if (xWins === 2) {
-    $('.X-2').addClass('winX');
-  } else if (xWins === 3) {
-    $('.X-3').addClass('winX');
-  }
-
-  if (oWins === 1) {
-    $('.O-1').addClass('winO');
-  } else if (oWins === 2) {
-    $('.O-2').addClass('winO');
-  } else if (oWins === 3) {
-    $('.O-2').addClass('winO');
-  }
 })
+
+function determinePlayerTurn(box) {
+  if (!$(box).hasClass('X') && !$(box).hasClass('O')) {
+    if (counter % 2 === 0) {
+      $(box).addClass('X');
+      $(box).addClass('flip');
+      counter += 1;
+    } else if (counter % 2 != 0) {
+      $(box).addClass('O');
+      $(box).addClass('flip');
+      counter += 1;
+    }
+  }
+}
+
+function updateArray(index) {
+  if ($(index).hasClass('X')) {
+    var x1 = $(index).attr('id')[3];
+    var x2 = $(index).attr('id')[4];
+    ticTacToe[x1][x2] = 'X';
+  } else if ($(index).hasClass('O')) {
+    var o1 = $(index).attr('id')[3];
+    var o2 = $(index).attr('id')[4];
+    ticTacToe[o1][o2] = 'O';
+  }
+}
+
+function announceWinner() {
+  if (winner === 'X') {
+    $('.box').addClass('X');
+    $('.box').removeClass('O');
+    $('.box').addClass('flip');
+    gameRound += 1;
+    console.log(gameRound);
+  } else if (winner === 'O') {
+    $('.box').addClass('O');
+    $('.box').removeClass('X');
+    $('.box').addClass('flip');
+    gameRound += 1 ;
+    console.log(gameRound);
+  } else if (counter === 9) {
+    console.log('TAI');
+    gameRound += 1 ;
+  }
+}
+
 
 // Reset board to beginning state.
 $('.hexagon').click(function() {
@@ -114,59 +125,35 @@ $(document).mousemove(function(event) {
 // })
 
 // Display number of rounds on document.
-$('.rounds').html('ROUND: ' + gameRounds);
-
-// Check for winner.
-function checkForWinner() {
-  checkHorizontal();
-  checkVertical();
-  checkDiagonal();
-  return winner;
-}
+$('.rounds').html('ROUND: ' + gameRound);
 
 // Log player scores.
 function playerScores() {
+
   if (winner === 'X') {
-    return xWins += 1;
+    xWins += 1;
   } else if (winner === 'O') {
-    return oWins += 1;
+    oWins += 1;
   }
+
+  if (xWins === 1) {
+    $('.X-1').addClass('winX');
+  } else if (xWins === 2) {
+    $('.X-2').addClass('winX');
+  } else if (xWins === 3) {
+    $('.X-3').addClass('winX');
+  }
+
+  if (oWins === 1) {
+    $('.O-1').addClass('winO');
+  } else if (oWins === 2) {
+    $('.O-2').addClass('winO');
+  } else if (oWins === 3) {
+    $('.O-2').addClass('winO');
+  }
+
 }
 
-// Check each horizontal row for winner, excluding null value.
-function checkHorizontal() {
-  for (var i = 0; i < ticTacToe.length; i++) {
-    if (ticTacToe[i][0] === ticTacToe[i][1] && ticTacToe[i][0] === ticTacToe[i][2]) {
-      if (ticTacToe[i][0] != null) {
-        return winner = ticTacToe[i][0];
-      }
-    }
-  }
-}
-
-// Check each vertical row for winner, excluding null value.
-function checkVertical() {
-  for (var i = 0; i < ticTacToe.length; i++) {
-    if (ticTacToe[0][i] === ticTacToe[1][i] && ticTacToe[0][i] === ticTacToe[2][i]) {
-      if (ticTacToe[0][i] != null) {
-        return winner = ticTacToe[0][i];
-      }
-    }
-  }
-}
-
-// Check diagonals for winner, excluding null value.
-function checkDiagonal() {
-  if (ticTacToe[0][0] === ticTacToe[1][1] && ticTacToe[0][0] === ticTacToe[2][2]) {
-    if (ticTacToe[0][0] != null) {
-      return winner = ticTacToe[0][0];
-    }
-  } else if (ticTacToe[0][2] === ticTacToe[1][1] && ticTacToe[0][2] === ticTacToe[2][0]) {
-    if (ticTacToe[0][2] != null) {
-      return winner = ticTacToe[0][2];
-    }
-  }
-}
 
 // Find mouse position and how much to move.
 function moveImage(selector, speed) {
