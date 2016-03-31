@@ -30,10 +30,14 @@ $('.box').click(function() {
 
   if (winner) {
     $('.ticTacToe').addClass('disabled');
-    gameRound += 1;
+    // if (!xWins >= 3 || !oWins >= 3) {
+    //   gameRound += 1;
+    // }
   }
 
-  $('.rounds').html('ROUND: ' + gameRound);
+
+
+
 
 })
 
