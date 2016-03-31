@@ -159,6 +159,10 @@ body {
   text-align: center;
 }
 
+.ticTacToe.disabled {
+  pointer-events: none;
+}
+
 .rowOne {}
 .rowTwo {}
 .rowThree {}

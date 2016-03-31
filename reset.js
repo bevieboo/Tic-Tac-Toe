@@ -5,6 +5,7 @@ $('.hexagon').click(function() {
   $('.box').removeClass('mouseOverX');
   $('.box').removeClass('mouseOverO');
   $('.box').removeClass('flip');
+  $('.ticTacToe').removeClass('disabled');
   winner = '';
   counter = 0;
   for (var i = 0; i < ticTacToe.length; i++) {
@@ -12,7 +13,7 @@ $('.hexagon').click(function() {
       ticTacToe[i][j] = null;
     }
   };
-  if (xWins === 3 || oWins === 3) {
+  if (xWins >= 3 || oWins >= 3) {
     xWins = 0;
     oWins = 0;
     $('.X-1').removeClass('winX');

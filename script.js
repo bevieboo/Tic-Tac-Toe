@@ -28,6 +28,13 @@ $('.box').click(function() {
   // Keeping tabs of player scores
   playerScores();
 
+  if (winner) {
+    $('.ticTacToe').addClass('disabled');
+    gameRound += 1;
+  }
+
+  $('.rounds').html('ROUND: ' + gameRound);
+
 })
 
 function determinePlayerTurn(box) {
@@ -61,46 +68,20 @@ function announceWinner() {
     $('.box').addClass('X');
     $('.box').removeClass('O');
     $('.box').addClass('flip');
-    gameRound += 1;
-    console.log(gameRound);
   } else if (winner === 'O') {
     $('.box').addClass('O');
     $('.box').removeClass('X');
     $('.box').addClass('flip');
-    gameRound += 1 ;
-    console.log(gameRound);
   } else if (counter === 9) {
     console.log('TAI');
-    gameRound += 1 ;
   }
 }
-
-
 
 // Move images on screen.
 $(document).mousemove(function(event) {
   moveImage('.bird1', 300);
   moveImage('.bird2', 800);
 })
-
-// // Mouse-over effects over boxes.
-// $('.box').mouseover(function() {
-//   if (counter % 2 === 0 && !$(this).hasClass('mouseOverO')) {
-//     $(this).addClass('mouseOverX');
-//   } else if (counter % 2 != 0 && !$(this).hasClass('mouseOverX')) {
-//     $(this).addClass('mouseOverO');
-//   }
-// })
-// $('.box').mouseleave(function() {
-//   if (counter % 2 === 0) {
-//     $(this).removeClass('mouseOverX');
-//   } else if (counter % 2 != 0) {
-//     $(this).removeClass('mouseOverO');
-//   }
-// })
-
-// Display number of rounds on document.
-$('.rounds').html('ROUND: ' + gameRound);
 
 // Log player scores.
 function playerScores() {
@@ -124,11 +105,10 @@ function playerScores() {
   } else if (oWins === 2) {
     $('.O-2').addClass('winO');
   } else if (oWins === 3) {
-    $('.O-2').addClass('winO');
+    $('.O-3').addClass('winO');
   }
 
 }
-
 
 // Find mouse position and how much to move.
 function moveImage(selector, speed) {
@@ -145,3 +125,19 @@ function moveImage(selector, speed) {
   var selectorTop = selector.data('top');
   selector.css('top', selectorTop + mouseY/speed + '%');
 }
+
+// // Mouse-over effects over boxes.
+// $('.box').mouseover(function() {
+//   if (counter % 2 === 0 && !$(this).hasClass('mouseOverO')) {
+//     $(this).addClass('mouseOverX');
+//   } else if (counter % 2 != 0 && !$(this).hasClass('mouseOverX')) {
+//     $(this).addClass('mouseOverO');
+//   }
+// })
+// $('.box').mouseleave(function() {
+//   if (counter % 2 === 0) {
+//     $(this).removeClass('mouseOverX');
+//   } else if (counter % 2 != 0) {
+//     $(this).removeClass('mouseOverO');
+//   }
+// })
