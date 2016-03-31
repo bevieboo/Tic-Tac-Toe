@@ -16,9 +16,11 @@ $('.box').click(function() {
   if (!$(this).hasClass('X') && !$(this).hasClass('O')) {
     if (counter % 2 === 0) {
       $(this).addClass('X');
+      $(this).addClass('flip');
       counter += 1;
     } else if (counter % 2 != 0) {
       $(this).addClass('O');
+      $(this).addClass('flip');
       counter += 1;
     }
   }
@@ -37,9 +39,11 @@ $('.box').click(function() {
   checkForWinner();
   // If winner has been determined, stop game and announce winner.
   if (winner === 'X') {
-    $('.box').addClass('winnerX');
+    $('.box').addClass('X');
+    $('.box').addClass('flip');
   } else if (winner === 'O') {
-    $('.box').addClass('winnerO');
+    $('.box').addClass('O');
+    $('.box').addClass('flip');
   }
   // Keeping tabs of player scores
   playerScores();
@@ -65,10 +69,9 @@ $('.box').click(function() {
 $('.hexagon').click(function() {
   $('.box').removeClass('X');
   $('.box').removeClass('O');
-  $('.box').removeClass('winnerX');
-  $('.box').removeClass('winnerO');
   $('.box').removeClass('mouseOverX');
   $('.box').removeClass('mouseOverO');
+  $('.box').removeClass('flip');
   winner = '';
   counter = 0;
   for (var i = 0; i < ticTacToe.length; i++) {
@@ -94,21 +97,21 @@ $(document).mousemove(function(event) {
   moveImage('.bird2', 800);
 })
 
-// Mouse-over effects over boxes.
-$('.box').mouseover(function() {
-  if (counter % 2 === 0 && !$(this).hasClass('mouseOverO')) {
-    $(this).addClass('mouseOverX');
-  } else if (counter % 2 != 0 && !$(this).hasClass('mouseOverX')) {
-    $(this).addClass('mouseOverO');
-  }
-})
-$('.box').mouseleave(function() {
-  if (counter % 2 === 0) {
-    $(this).removeClass('mouseOverX');
-  } else if (counter % 2 != 0) {
-    $(this).removeClass('mouseOverO');
-  }
-})
+// // Mouse-over effects over boxes.
+// $('.box').mouseover(function() {
+//   if (counter % 2 === 0 && !$(this).hasClass('mouseOverO')) {
+//     $(this).addClass('mouseOverX');
+//   } else if (counter % 2 != 0 && !$(this).hasClass('mouseOverX')) {
+//     $(this).addClass('mouseOverO');
+//   }
+// })
+// $('.box').mouseleave(function() {
+//   if (counter % 2 === 0) {
+//     $(this).removeClass('mouseOverX');
+//   } else if (counter % 2 != 0) {
+//     $(this).removeClass('mouseOverO');
+//   }
+// })
 
 // Display number of rounds on document.
 $('.rounds').html('ROUND: ' + gameRounds);
