@@ -14,11 +14,15 @@ body {
 .userOptions {
   position: absolute;
   width: 100%;
-  height: 93%;
+  height: 100%;
   margin: 0 auto;
-  background-color: black;
+  /*background-color: grey;*/
   z-index: 2;
   text-align: center;
+  background-image: url('images/geometric2.jpg');
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .userOptions h3 {
@@ -26,6 +30,37 @@ body {
   font-family: 'Cardo';
   font-family: sans-serif;
   font-weight: bolder;
+}
+
+.userOne, .userTwo {
+  display: inline-block;
+  background-color: white;
+  width: 30%;
+  height: 55%;
+  vertical-align: top;
+  margin: 50px 30px;
+  border-radius: 15%;
+}
+
+.color1, .color2, .color3, .color4 {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 60px 10px;
+}
+
+.color1 {
+  background-color: #F3E68A;
+}
+.color2 {
+  background-color: #7FD5CE;
+}
+.color3 {
+  background-color: #AFD0FE;
+}
+.color4 {
+  background-color: #FFD1DC;
 }
 
 .bird {
@@ -54,7 +89,7 @@ body {
 
 .header-wrap{
   vertical-align: top;
-  margin-top: 20px;
+  padding-top: 20px;
 }
 
 .header-wrap-left {
@@ -296,15 +331,6 @@ body {
   font-weight: bolder;
 }
 
-.userOne, .userTwo {
-  display: inline-block;
-  background-color: white;
-  width: 30%;
-  height: 55%;
-  vertical-align: top;
-  margin: 50px 20px;
-}
-
 .hexagonMain {
   position: relative;
   width: 124px;
@@ -321,16 +347,16 @@ body {
   z-index: 1;
   top: 0;
   width: 0px;
-  background: black;
+  background: transparent;
   border-top: 50px transparent solid;
   border-bottom: 50px transparent solid;
 }
 
 .hexagonMain:before {
-    left: 0;
+    left: -30px;
     border-right: 30px #D7D8DA solid;
 }
 .hexagonMain:after {
-    right: 0;
+    right: -30px;
     border-left: 30px #D7D8DA solid;
 }

@@ -4,6 +4,8 @@ var ticTacToe = [
   [null, null, null]
 ]
 
+var playerOneColor = 'yellow';
+var playerTwoColor = 'green';
 var counter = 0;
 var winner = '';
 var xWins = 0;
