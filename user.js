@@ -18,6 +18,7 @@ $('.js-play').click(function() {
   $('.userOptions').hide();
 
   // Get user selected colors.
+  // Assign color to a new variable to be referenced in script.js
   playerOneColor = $('.userOne .color.selected').attr('class').split(' ')[0];
   console.log(playerOneColor);
   playerTwoColor = $('.userTwo .color.selected').attr('class').split(' ')[0];

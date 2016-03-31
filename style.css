@@ -38,7 +38,7 @@ body {
   width: 30%;
   height: 55%;
   vertical-align: top;
-  margin: 8% 2% 3% 2%;
+  margin: 6% 2% 3% 2%;
   border-radius: 15%;
 }
 
@@ -93,8 +93,8 @@ body {
 
 .bird3 {
   width: 50px;
-  top: 25%;
-  left: 20%;
+  top: 30%;
+  left: 15%;
 }
 
 .bird4 {
