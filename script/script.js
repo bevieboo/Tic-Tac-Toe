@@ -3,14 +3,16 @@ var ticTacToe = [
   [null, null, null],
   [null, null, null]
 ]
-
-var playerOneColor = 'yellow';
-var playerTwoColor = 'green';
+//
+var playerOneColor = '';
+var playerTwoColor = '';
 var counter = 0;
 var winner = '';
 var xWins = 0;
 var oWins = 0;
 var gameRound = 1;
+
+showPlayerTurn();
 
 $('.box').click(function() {
   // Assign box:
@@ -37,7 +39,20 @@ $('.box').click(function() {
     // }
   }
 
+  // Run show player turn again to match counter.
+  showPlayerTurn();
+
 })
+
+function showPlayerTurn() {
+  if (counter % 2 === 0) {
+    $('.playerOne').addClass('playerSelected');
+    $('.playerTwo').removeClass('playerSelected');
+  } else if (counter % 2 != 0) {
+    $('.playerTwo').addClass('playerSelected');
+    $('.playerOne').removeClass('playerSelected');
+  }
+}
 
 function determinePlayerTurn(box) {
   if (!$(box).hasClass('X') && !$(box).hasClass('O')) {

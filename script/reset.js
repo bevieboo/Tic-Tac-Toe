@@ -28,4 +28,5 @@ $('.hexagon').click(function() {
     $('.rounds').html('ROUND: ' + gameRound);
     winner = '';
   }
+  showPlayerTurn();
 })
