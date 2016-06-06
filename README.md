@@ -2,7 +2,7 @@
 
 This is a 2 player game of Tic Tac Toe with color blocks.
 
-<img src="http://imgur.com/CheLO4l" width="500">
+<img src="http://i.imgur.com/CheLO4l.png?1" width="500">
 
 ## HOW TO WIN
 
