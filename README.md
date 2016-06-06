@@ -2,6 +2,8 @@
 
 This is a 2 player game of Tic Tac Toe with color blocks.
 
+<img src="http://imgur.com/CheLO4l" width="500">
+
 ## HOW TO WIN
 
 Get 3 similar colors in a row, column or diagonal.
